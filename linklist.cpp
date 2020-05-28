@@ -4,11 +4,13 @@ class Node{
 public:
 int data;
 Node *next;
+    
 node(int d)
 {
     data=d;
     next =NULL;
 }
+    //print function decleration
 };
 
 
@@ -20,5 +22,6 @@ int main(void)
  Node n3(6);
  Node n4(8);
  Node *head=&n1;
+    //print function();
 
 }
