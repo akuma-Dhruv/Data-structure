@@ -6,15 +6,35 @@ int data;
 Node *next;
 
 Node(int d)
-
-    
-
 {
     data=d;
     next =NULL;
 }
-    
+
+
 };
+Node* takeInput()
+{
+	int data;
+	cin>>data;
+	Node *head =NULL;
+	Node *tail= NULL;
+	while(data!=-1)
+	{ Node *newNode= new Node(data);
+		if(head==NULL)
+		{
+		    head=newNode;
+            tail=newNode;
+
+		}
+		else
+        {
+            tail=newNode;
+        }
+		cin>>data;
+	}
+	return head;
+}
 void print(Node *head) {
 Node *temp = head;
 		while(temp != NULL) {
@@ -24,17 +44,9 @@ Node *temp = head;
 }
 
 
-int main(void)
+int main()
 {
- Node n1(2);
- Node n2(4);
- Node n3(6);
- Node n4(8);
- Node *head=&n1;
-
-	n1.next = &n2;
-	n2.next = &n3;
-	n3.next = &n4;
+ Node *head = takeInput();
 	print(head);
 
 
