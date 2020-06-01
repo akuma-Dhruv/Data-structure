@@ -33,6 +33,29 @@ Node* takeInput()
 	}
 	return head;
 }
+void insertNode(Node *head, int i,int data)
+{
+	Node *newNode= new Node(data);
+	int count =0;
+	Node *temp =head;
+	if(i==0)
+	{
+		newNode ->next=head;
+		head=newNode;
+		return head;
+	}
+	while (temp != NULL && count<i-1)
+	{
+		temp= temp->next;
+		count++;
+	}
+	if(temp!=NULL)
+	{
+		Node *a =temp->next;
+		temp-> next = newNode;
+		newNode->next=a;
+	}
+}
 void print(Node *head)
 {
         Node *temp = head;
@@ -47,4 +70,6 @@ int main()
 {
  Node *head = takeInput();
 	print(head);
+	int i,data;
+	insertNode(head,i,data);
 }
