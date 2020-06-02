@@ -26,14 +26,15 @@ Node* takeInput()
             tail=newNode;
         }
 		else
-        {
-            tail=newNode;
+        {	tail->next=newNode;
+			tail=tail->next;
+            //tail=newNode;
         }
 		cin>>data;
 	}
 	return head;
 }
-void insertNode(Node *head, int i,int data)
+Node* insertNode(Node *head, int i,int data)
 {
 	Node *newNode= new Node(data);
 	int count =0;
@@ -56,6 +57,32 @@ void insertNode(Node *head, int i,int data)
 		newNode->next=a;
 	}
 }
+Node* deleteNode(Node *head, int i)
+{
+	int count =0;
+	Node *temp =head;
+	if(i==0)
+	{
+		head=head->next;
+        delete temp;
+		return head;
+	}
+	while (temp != NULL && count<i-1)
+	{
+		temp= temp->next;
+		count++;
+	}
+	if(temp!=NULL)
+	{
+		Node *a =temp->next;
+		Node*b =a-> next;
+		temp->next=b;
+        delete a;
+
+	}
+	return head;
+}
+
 void print(Node *head)
 {
         Node *temp = head;
@@ -71,5 +98,10 @@ int main()
  Node *head = takeInput();
 	print(head);
 	int i,data;
-	insertNode(head,i,data);
+/*	cin>>i>>data;
+	head=insertNode(head,i,data);
+	print(head);
+*/	cin>>i;
+	head=deleteNode(head,i);
+	print(head);
 }
