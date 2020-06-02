@@ -33,6 +33,21 @@ Node* takeInput()
 	}
 	return head;
 }
+Node* InsertNode(int i,int data,Node *head)
+{  Node* temp =head;
+	if(head==NULL)
+	return head;
+	else if(head!=NULL && i==0)
+	{
+		Node *newNode = new Node(data);
+		newNode->next=temp;
+		temp=newNode;
+        //return head;
+	}
+	else
+		InsertNode(i-1,data,temp->next);
+		return head;
+}
 int getcount(Node *head)
 {
 	if(head==NULL)
@@ -57,5 +72,9 @@ int main()
 {
  Node *head = takeInput();
 	print(head);
-cout<<"\nTotal Number of elements in list are "<<getcount(head);
+    //cout<<"\nTotal Number of elements in list are "<<getcount(head);
+    int i,data;
+	cin>>i>>data;
+	head=InsertNode(i,data,head);
+	print(head);
 }
