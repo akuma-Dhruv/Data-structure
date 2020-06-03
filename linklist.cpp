@@ -146,7 +146,29 @@ Node* append(Node *head,int e)
 
 
 }
+Node* eliminate(Node *head)
+{
 
+	Node *temp =head;
+	Node *a;
+
+	if(temp==NULL)
+	{
+		return head;
+	}
+	while (temp != NULL)
+	{
+		a =temp->next;
+	if(temp->data==a->data)
+	{
+		Node*b =a-> next;
+		temp->next=b;
+        delete a;
+	}
+		temp= temp->next;
+	}
+	return head;
+}
 int main()
 {
  Node *head = takeInput();
@@ -160,9 +182,11 @@ int main()
 	print(head);
 */ /*cin>>i;
 cout<<findN(i,head);
-*/
+*/ /*
 cin>>i;
 head=append(head,i);
 print(head);
-
+*/
+head =eliminate(head);
+print(head);
 }
