@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 
-class Node{
+class Node
+{
 public:
 int data;
 Node *next;
@@ -84,16 +85,19 @@ Node* deleteNode(Node *head, int i)
 }
 
 void print(Node *head)
-{
+{	int count=0;
         Node *temp = head;
 		while(temp != NULL)
     {
 		cout << temp -> data << " ";
 		temp = temp -> next;
+		count++;
 	}
+	//cout<<"\n"<<count;
 }
 int findN(int d,Node *head)
-{	int count=0;
+{
+	int count=0;
 	Node *temp = head;
 	if (temp==NULL)
 		return -1;
@@ -108,11 +112,45 @@ int findN(int d,Node *head)
 	return -1;
 
 }
+Node* append(Node *head,int e)
+{
+	Node *tail;
+	int count=0;
+	Node *temp = head;
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+		count++;
+	}
+        if(e>count)
+            return head;
+	temp= head;
+	//cout<<endl<<tail->data;  for debug purpose
+
+	tail->next=temp;
+	int i=0;
+		while(temp != NULL&&i<count-e-1)
+    {
+		temp = temp -> next; i++;
+	}
+	Node *a=temp->next;
+	temp->next=NULL;
+
+	//cout<<temp->data; for debug
+	head=a;
+	delete a;
+	delete temp;
+
+
+	return head;
+
+
+}
 
 int main()
 {
  Node *head = takeInput();
-	print(head);
+	//print(head);
 	int i,data;
 /*	cin>>i>>data;
 	head=insertNode(head,i,data);
@@ -120,7 +158,11 @@ int main()
 */	/*cin>>i;
 	head=deleteNode(head,i);
 	print(head);
+*/ /*cin>>i;
+cout<<findN(i,head);
 */
 cin>>i;
-cout<<findN(i,head);
+head=append(head,i);
+print(head);
+
 }
