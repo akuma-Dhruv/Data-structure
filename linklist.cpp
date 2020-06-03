@@ -92,6 +92,22 @@ void print(Node *head)
 		temp = temp -> next;
 	}
 }
+int findN(int d,Node *head)
+{	int count=0;
+	Node *temp = head;
+	if (temp==NULL)
+		return -1;
+		while(temp != NULL)
+    {
+		if(temp -> data==d)
+			return count;
+		else
+		temp = temp -> next;
+		count++;
+	}
+	return -1;
+
+}
 
 int main()
 {
@@ -101,7 +117,10 @@ int main()
 /*	cin>>i>>data;
 	head=insertNode(head,i,data);
 	print(head);
-*/	cin>>i;
+*/	/*cin>>i;
 	head=deleteNode(head,i);
 	print(head);
+*/
+cin>>i;
+cout<<findN(i,head);
 }
