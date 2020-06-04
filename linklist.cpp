@@ -85,9 +85,14 @@ Node* deleteNode(Node *head, int i)
 }
 Node* reverseLL(Node *head)
 {
+
     int count=0;
         Node *temp = head;
         Node*tail;
+        if(temp==NULL)
+	{
+		return head;
+	}
 		while(temp != NULL)
     {   tail=temp;
 		temp = temp -> next;
