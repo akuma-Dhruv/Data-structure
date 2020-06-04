@@ -83,9 +83,35 @@ Node* deleteNode(Node *head, int i)
 	}
 	return head;
 }
+Node* reverseLL(Node *head)
+{
+    int count=0;
+        Node *temp = head;
+        Node*tail;
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+		count++;
+	}
+	int i=0;
 
+	temp=head;
+	Node*a,*b;
+	while(i<count)
+    {
+        a=head->next;
+        b=tail->next;
+        tail->next=head;
+        head->next=b;
+        head=a;
+        i++;
+    }
+    delete a,b,temp;
+    return tail;
+}
 void print(Node *head)
-{	int count=0;
+{
+    int count=0;
         Node *temp = head;
 		while(temp != NULL)
     {
@@ -156,15 +182,17 @@ Node* eliminate(Node *head)
 	{
 		return head;
 	}
-	while (temp != NULL)
+	while (temp ->next!= NULL)
 	{
-		a =temp->next;
+		Node *a =temp->next;
 	if(temp->data==a->data)
 	{
 		Node*b =a-> next;
 		temp->next=b;
         delete a;
+
 	}
+	else
 		temp= temp->next;
 	}
 	return head;
@@ -187,6 +215,8 @@ cin>>i;
 head=append(head,i);
 print(head);
 */
-head =eliminate(head);
+//head =eliminate(head);
+//print(head);
+head=reverseLL(head);
 print(head);
 }
