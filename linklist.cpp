@@ -202,6 +202,21 @@ Node* eliminate(Node *head)
 	}
 	return head;
 }
+Node* midpoint(Node *head)
+{
+	Node *slow,*fast;
+	slow=head;
+	fast=head;
+	if (head!=NULL)
+    {
+	while(fast!=NULL&&fast->next!= NULL)
+	{
+		slow=slow->next;
+		fast = fast->next->next;
+	}
+	cout<<slow->data;
+    }
+}
 int main()
 {
  Node *head = takeInput();
@@ -222,6 +237,7 @@ print(head);
 */
 //head =eliminate(head);
 //print(head);
-head=reverseLL(head);
-print(head);
+//head=reverseLL(head);
+//print(head);
+midpoint(head);
 }
