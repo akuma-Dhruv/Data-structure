@@ -217,20 +217,42 @@ Node* midpoint(Node *head)
 	cout<<slow->data;
     }
 }
+Node* merge(Node* h1, Node* h2)
+{
+    if (!h1)
+        return h2;
+    if (!h2)
+        return h1;
+
+    // start with the linked list
+    // whose head data is the least
+    if (h1->data < h2->data) {
+        h1->next = merge(h1->next, h2);
+        return h1;
+    }
+    else {
+        h2->next = merge(h1, h2->next);
+        return h2;
+    }
+}
 int main()
 {
- Node *head = takeInput();
-	//print(head);
-	int i,data;
+ Node *head1 = takeInput();
+ Node *head2 = takeInput();
+//print(head);
+int i,data;
 /*	cin>>i>>data;
 	head=insertNode(head,i,data);
 	print(head);
-*/	/*cin>>i;
+*/
+/*cin>>i;
 	head=deleteNode(head,i);
 	print(head);
-*/ /*cin>>i;
+*/
+/*cin>>i;
 cout<<findN(i,head);
-*/ /*
+*/
+/*
 cin>>i;
 head=append(head,i);
 print(head);
@@ -239,5 +261,7 @@ print(head);
 //print(head);
 //head=reverseLL(head);
 //print(head);
-midpoint(head);
+//midpoint(head);
+head1=merge(head1,head2);
+print(head1);
 }
