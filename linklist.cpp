@@ -202,6 +202,17 @@ Node* eliminate(Node *head)
 	}
 	return head;
 }
+Node* gettail(Node *head)
+{
+	Node *tail;
+	Node *temp = head;
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+	}
+	return tail;
+	
+}
 Node* midpoint(Node *head)
 {
 	Node *slow,*fast;
@@ -214,10 +225,10 @@ Node* midpoint(Node *head)
 		slow=slow->next;
 		fast = fast->next->next;
 	}
-	cout<<slow->data;
+	return slow;
     }
 }
-Node* merge(Node* h1, Node* h2)
+Node* mergeL(Node* h1, Node* h2)
 {
     if (!h1)
         return h2;
@@ -235,6 +246,7 @@ Node* merge(Node* h1, Node* h2)
         return h2;
     }
 }
+
 int main()
 {
  Node *head1 = takeInput();
@@ -262,6 +274,6 @@ print(head);
 //head=reverseLL(head);
 //print(head);
 //midpoint(head);
-head1=merge(head1,head2);
+head1=mergeL(head1,head2);
 print(head1);
 }
