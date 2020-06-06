@@ -264,7 +264,24 @@ void split(Node *head, Node **front, Node **back){
    *back = slow->next;
    slow->next = NULL;
 }
+void mergeS(Node **head)
+{
+    Node *temp=*head;
+	Node *a ;
+	Node *b;
 
+    if((temp== NULL) || (temp->next ==NULL))
+    {
+
+        return;
+    }
+
+	split(temp,&a,&b);
+	mergeS(&a);
+	mergeS(&b);
+	*head=mergeL(a,b);
+
+}
 
 int main()
 {
@@ -297,5 +314,6 @@ print(head);
 /* head1=mergeL(head1,head2);
 print(head1); */
 
-
+mergeS(&head);
+print(head);
 }
