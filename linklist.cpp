@@ -83,9 +83,18 @@ Node* deleteNode(Node *head, int i)
 	}
 	return head;
 }
+Node* gettail(Node *head)
+{	//return tail of the given linked list
+	Node *tail;
+	Node *temp = head;
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+	}
+	return tail;
+}
 Node* reverseLL(Node *head)
-{
-
+{	//Return given llinked list in reverse order
     int count=0;
         Node *temp = head;
         Node*tail;
@@ -93,13 +102,8 @@ Node* reverseLL(Node *head)
 	{
 		return head;
 	}
-		while(temp != NULL)
-    {   tail=temp;
-		temp = temp -> next;
-		count++;
-	}
+		tail=gettail(head);
 	int i=0;
-
 	temp=head;
 	Node*a,*b;
 	while(i<count)
@@ -115,7 +119,7 @@ Node* reverseLL(Node *head)
     return tail;
 }
 void print(Node *head)
-{
+{		//print the Given linked list
     int count=0;
         Node *temp = head;
 		while(temp != NULL)
@@ -124,7 +128,6 @@ void print(Node *head)
 		temp = temp -> next;
 		count++;
 	}
-	//cout<<"\n"<<count;
 }
 int findN(int d,Node *head)
 {
@@ -144,45 +147,38 @@ int findN(int d,Node *head)
 
 }
 Node* append(Node *head,int e)
-{
+{  //append last n of the list
+	// if list is 1 2 3 4 5 \
+	and value of n(e) is 3 then \
+	output will be 3 4 5 1 2
+	
 	Node *tail;
 	int count=0;
+	int i=0;
 	Node *temp = head;
-		while(temp != NULL)
-    {   tail=temp;
-		temp = temp -> next;
-		count++;
-	}
-        if(e>count)
-            return head;
+	tail=gettail(head);
+      if(e>count)
+		return head;
 	temp= head;
 	//cout<<endl<<tail->data;  for debug purpose
-
 	tail->next=temp;
-	int i=0;
-		while(temp != NULL&&i<count-e-1)
+	while(temp != NULL&&i<count-e-1)
     {
-		temp = temp -> next; i++;
+		temp = temp -> next; 
+		i++;
 	}
 	Node *a=temp->next;
 	temp->next=NULL;
-
 	//cout<<temp->data; for debug
 	head=a;
 	delete a;
 	delete temp;
-
-
 	return head;
-
-
 }
 Node* eliminate(Node *head)
-{
-
+{	//delete dublicates or repetive elements
 	Node *temp =head;
 	Node *a;
-
 	if(temp==NULL)
 	{
 		return head;
@@ -190,28 +186,16 @@ Node* eliminate(Node *head)
 	while (temp ->next!= NULL)
 	{
 		Node *a =temp->next;
-	if(temp->data==a->data)
-	{
-		Node*b =a-> next;
-		temp->next=b;
-        delete a;
-
-	}
-	else
+		if(temp->data==a->data)
+		{
+			Node*b =a-> next;
+			temp->next=b;
+			delete a;
+		}
+		else
 		temp= temp->next;
 	}
 	return head;
-}
-Node* gettail(Node *head)
-{
-	Node *tail;
-	Node *temp = head;
-		while(temp != NULL)
-    {   tail=temp;
-		temp = temp -> next;
-	}
-	return tail;
-
 }
 Node* midpoint(Node *head)
 {
@@ -229,24 +213,21 @@ Node* midpoint(Node *head)
     }
 }
 Node* mergeL(Node* h1, Node* h2)
+//merge two sorted linked list 
 {	Node *result=NULL;
     if (!h1)
         return h2;
     if (!h2)
         return h1;
-
-
     if (h1->data < h2->data) {
 		result=h1;
         result->next = mergeL(h1->next, h2);
-
     }
     else {
 		result=h2;
         result->next = mergeL(h1, h2->next);
     }
     return result;
-
 }
 void split(Node *head, Node **front, Node **back){
    Node *fast;
@@ -269,18 +250,14 @@ void mergeS(Node **head)
     Node *temp=*head;
 	Node *a ;
 	Node *b;
-
     if((temp== NULL) || (temp->next ==NULL))
     {
-
-        return;
+		return;
     }
-
 	split(temp,&a,&b);
 	mergeS(&a);
 	mergeS(&b);
 	*head=mergeL(a,b);
-
 }
 
 int main()
