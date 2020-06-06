@@ -211,7 +211,7 @@ Node* gettail(Node *head)
 		temp = temp -> next;
 	}
 	return tail;
-	
+
 }
 Node* midpoint(Node *head)
 {
@@ -229,28 +229,30 @@ Node* midpoint(Node *head)
     }
 }
 Node* mergeL(Node* h1, Node* h2)
-{
+{	Node *result=NULL;
     if (!h1)
         return h2;
     if (!h2)
         return h1;
 
-    // start with the linked list
-    // whose head data is the least
+
     if (h1->data < h2->data) {
-        h1->next = merge(h1->next, h2);
-        return h1;
+		result=h1;
+        result->next = mergeL(h1->next, h2);
+
     }
     else {
-        h2->next = merge(h1, h2->next);
-        return h2;
+		result=h2;
+        result->next = mergeL(h1, h2->next);
     }
+    return result;
+
 }
 
 int main()
 {
- Node *head1 = takeInput();
- Node *head2 = takeInput();
+ Node *head = takeInput();
+ //Node *head2 = takeInput();
 //print(head);
 int i,data;
 /*	cin>>i>>data;
@@ -274,6 +276,9 @@ print(head);
 //head=reverseLL(head);
 //print(head);
 //midpoint(head);
-head1=mergeL(head1,head2);
-print(head1);
+
+ head1=mergeL(head1,head2);
+print(head1); 
+
+
 }
