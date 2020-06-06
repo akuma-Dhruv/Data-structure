@@ -248,6 +248,23 @@ Node* mergeL(Node* h1, Node* h2)
     return result;
 
 }
+void split(Node *head, Node **front, Node **back){
+   Node *fast;
+   Node *slow;
+   slow = head;
+   fast = head->next;
+   while (fast != NULL) {
+      fast = fast->next;
+      if (fast != NULL) {
+         slow = slow->next;
+         fast = fast->next;
+      }
+   }
+   *front = head;
+   *back = slow->next;
+   slow->next = NULL;
+}
+
 
 int main()
 {
@@ -277,8 +294,8 @@ print(head);
 //print(head);
 //midpoint(head);
 
- head1=mergeL(head1,head2);
-print(head1); 
+/* head1=mergeL(head1,head2);
+print(head1); */
 
 
 }
