@@ -106,11 +106,26 @@ void print(Node *head)
 		temp = temp -> next;
 	}
 }
+Node* reverseL(Node *head)
+{
+	if(head==NULL )
+	return head;
+    if(head->next=NULL)
+	return head;
+
+
+	Node *a =reverseL(head->next);
+	head->next->next=head;
+	head->next=NULL;
+	return a;
+}
+
+
 
 int main()
 {
  Node *head = takeInput();
-	print(head);
+	/*print(head);
     cout<<"\nTotal Number of elements in list are "<<getcount(head)<<endl;
     int i,data;
 	/*cin>>i>>data;
@@ -119,7 +134,9 @@ int main()
 *//* 	cin>>i;
 	head=deleteNode(head,i);
 	print(head); */
-	head= gettail(head);
+	/* head= gettail(head);
+	print(head); */
+	head=reverseL(head);
 	print(head);
 
 }
