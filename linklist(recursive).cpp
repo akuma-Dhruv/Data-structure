@@ -45,7 +45,7 @@ Node* InsertNode(int i,int data,Node *head)
 	}
 	else if(head!=NULL && i==1)
 	{
-	
+
 		Node* a= head->next;
 		head->next= newNode;
 		newNode->next=a;
@@ -66,7 +66,7 @@ Node* deleteNode(Node *head, int i)
 			delete temp;
 			return head;
 		}
-	
+
 	else if(temp!=NULL&&i==1)
 	{
 		Node *a =temp->next;
@@ -77,6 +77,15 @@ Node* deleteNode(Node *head, int i)
 	}
 	deleteNode(head->next,i-1);
 	return head;
+}
+Node* gettail(Node *head)
+{
+	if(head->next==NULL)
+	{
+
+		return head;
+	}
+	head=gettail(head->next);
 }
 int getcount(Node *head)
 {
@@ -107,7 +116,10 @@ int main()
 	/*cin>>i>>data;
 	head=InsertNode(i,data,head);
 	print(head);
-*/	cin>>i;
+*//* 	cin>>i;
 	head=deleteNode(head,i);
+	print(head); */
+	head= gettail(head);
 	print(head);
+
 }
