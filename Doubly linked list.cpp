@@ -43,22 +43,38 @@ Node* takeInput()
 void print(Node *head)
 {
         Node *temp = head;
-		while(temp->next!=NULL)
+		while(temp!=NULL)
     {
-		//cout << temp -> data << " ";
+		cout << temp -> data << " ";
 		temp = temp -> next;
 	}
-	while(temp!=NULL)
+	/*while(temp!=NULL)
+    {
+		cout << temp -> data << " ";
+		temp = temp -> prev;
+	}*/
+
+}
+Node *gettail(Node *head){
+
+while(head->next!=NULL)
+    {
+		head= head->next;
+	}
+	return head;
+}
+void printRev(Node *head)
+{ Node *tail=gettail(head);
+Node*temp=tail;
+    while(temp!=NULL)
     {
 		cout << temp -> data << " ";
 		temp = temp -> prev;
 	}
-
-
 }
 int main()
 {
 	Node *head = takeInput();
-	print(head);
+	printRev(head);
 }
 
