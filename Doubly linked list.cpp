@@ -40,6 +40,33 @@ Node* takeInput()
 
 	return head;
 }
+Node* insertNode(Node *head, int i,int data)
+{
+	Node *newNode= new Node(data);
+	int count =0;
+	Node *temp =head;
+	if(i==0)
+	{
+		newNode->next=head;
+		head->prev=newNode;
+		head=newNode;
+		head->prev =NULL;
+		return head;
+	}
+	while (temp != NULL && count<i-1)
+	{
+		temp= temp->next;
+		count++;
+	}
+	if(temp!=NULL)
+	{
+		Node *a =temp->next;
+		temp-> next = newNode;
+		newNode->next=a;
+		a->prev= newNode;
+		newNode->prev= temp;
+	}
+}
 void print(Node *head)
 {
         Node *temp = head;
@@ -48,12 +75,6 @@ void print(Node *head)
 		cout << temp -> data << " ";
 		temp = temp -> next;
 	}
-	/*while(temp!=NULL)
-    {
-		cout << temp -> data << " ";
-		temp = temp -> prev;
-	}*/
-
 }
 Node *gettail(Node *head){
 
@@ -75,6 +96,9 @@ Node*temp=tail;
 int main()
 {
 	Node *head = takeInput();
+	int i ,data;
+	cin>>i>>data;
+	head=insertNode(head,i,data);
 	printRev(head);
 }
 
