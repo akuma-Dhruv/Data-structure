@@ -5,12 +5,10 @@ class Node{
 public:
 int data;
 Node *next;
-Node *prev;
 Node(int d)
 {
     data=d;
     next =NULL;
-	prev= NULL;
 }
 };
 Node* takeInput()
@@ -47,6 +45,8 @@ void print(Node *head)
 	}
 	cout<<temp->data;           //for the very last element
 }
+
+
 int main()
 {
 	Node *head = takeInput();
