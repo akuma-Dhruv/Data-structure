@@ -76,8 +76,36 @@ void print(Node *head)
 		temp = temp -> next;
 	}
 }
-Node *gettail(Node *head){
+Node* InsertNodeRe(int i,int data,Node *head)
+{		Node *newNode = new Node(data);
+	if(head==NULL)
+	return head;
+	if(i==0)
+	{
+		newNode->next=head;
+		head->prev=newNode;
+		head=newNode;
+		head->prev =NULL;
+		return head;
+	}
+	else if(head!=NULL && i==1)
+	{
 
+		Node *a =head->next;
+		head-> next = newNode;
+		newNode->next=a;
+		a->prev= newNode;
+		newNode->prev= head;
+	}
+	else
+		InsertNodeRe(i-1,data,head->next);
+
+
+
+		return head;
+}
+Node *gettail(Node *head)
+{
 while(head->next!=NULL)
     {
 		head= head->next;
@@ -98,7 +126,7 @@ int main()
 	Node *head = takeInput();
 	int i ,data;
 	cin>>i>>data;
-	head=insertNode(head,i,data);
+	head=InsertNodeRe(i,data,head);
 	printRev(head);
 }
 
