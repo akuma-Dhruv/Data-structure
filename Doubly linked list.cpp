@@ -104,6 +104,32 @@ Node* InsertNodeRe(int i,int data,Node *head)
 
 		return head;
 }
+Node* deleteNode(Node *head, int i)
+{
+	int count =0;
+	Node *temp =head;
+	if(i==0)
+	{
+		head=head->next;
+		head->prev=NULL;
+        delete temp;
+		return head;
+	}
+	while (temp != NULL && count<i-1)
+	{
+		temp= temp->next;
+		count++;
+	}
+	if(temp!=NULL)
+	{
+		Node *a =temp->next;
+		Node*b =a-> next;
+		temp->next=b;
+		b->prev=temp;
+        delete a;
+	}
+	return head;
+}
 Node *gettail(Node *head)
 {
 while(head->next!=NULL)
@@ -125,8 +151,12 @@ int main()
 {
 	Node *head = takeInput();
 	int i ,data;
+	/*
 	cin>>i>>data;
 	head=InsertNodeRe(i,data,head);
+	printRev(head);*/
+	cin>>i;
+	head=deleteNode(head,i);
 	printRev(head);
 }
 
