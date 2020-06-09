@@ -52,10 +52,19 @@ void print(Node *head)
 	cout<<temp->data;           //for the very last element
 }
 
-
+void printRev(Node *head)
+{
+Node*temp=head->prev;
+    while(temp!=head)
+    {
+		cout << temp -> data << " ";
+		temp = temp -> prev;
+	}
+	cout<<temp->data;
+}
 int main()
 {
 	Node *head = takeInput();
-	print(head);
+	printRev(head);
 }
 
