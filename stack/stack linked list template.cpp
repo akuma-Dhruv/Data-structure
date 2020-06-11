@@ -5,12 +5,10 @@ class Node {
 	public :
 		Z data;
 		Node *prev;
-
 		Node(Z data) {
 			this -> data = data;
 			prev = NULL;
 		}
-
 		~Node() {
 			delete prev;
 		}
@@ -18,34 +16,28 @@ class Node {
 template<typename Z>
 class Stack {
 	Node<Z> *head;
-	int sizze;
-
+	int size;
 	public :
-
 	Stack() {
 		head=NULL;
-		sizze =0;
+		size =0;
 
 	}
-
 	int getSize() {
-		return sizze;
+		return size;
 	}
-
 	bool isEmpty() {
-	return sizze == 0;
+	return size == 0;
 
 	}
-
 	void push(Z input) {
-		sizze++;
+		size++;
 		Node <Z> *newNode;
 		newNode = new Node <Z>(input);
 		newNode->prev=head;
 		head=newNode;
 
 	}
-
 	Z pop() {
 	if (isEmpty())
 	return 0;
@@ -53,15 +45,13 @@ class Stack {
 		a= head;
 		Z d=a->data;
 		head=head->prev;
-		sizze--;
+		size--;
 		delete a;
 		return d;
 	}
-
 	Z top() {
 		return head->data;
 	}
-
 };
 int main()
 {
@@ -76,8 +66,5 @@ cout<<L.top()<<endl;
 cout<<L.pop()<<endl;
 cout<<L.pop()<<endl;
 cout<<L.pop()<<endl;
-
 cout<<L.isEmpty()<<endl;
-
-
 }
