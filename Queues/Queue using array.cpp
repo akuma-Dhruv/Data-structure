@@ -26,9 +26,12 @@ public:
     {
         return size ==0;
     }
-    void enqueue(int element)
-    {
-        if(size==capacity)
+    void enqueue()
+    {int i=0;
+        while(i<capacity)
+        {   int element;
+        cin>>element;
+            if(size==capacity)
         {
             cout<<"Queue is full"<<endl;
             return;
@@ -40,6 +43,8 @@ public:
         }
 
         size++;
+        i++;
+    }
     }
 	int front() {
 		if(isEmpty()) {
@@ -66,20 +71,23 @@ public:
 };
 int main()
 
-{ arraystack q(17);
-    q.enqueue(10);
-	q.enqueue(20);
+{   int s;
+cout<<"enter size for queue"<<"  ";
+cin>>s;
+     arraystack q(s);
+    q.enqueue();
+	/*q.enqueue(20);
 	q.enqueue(30);
 	q.enqueue(40);
 	q.enqueue(50);
-
+*/
 
 	cout << q.front() << endl;
 	cout << q.dequeue() << endl;
 	cout << q.dequeue() << endl;
 	cout << q.dequeue() << endl;
 
-	q.enqueue(60);
+//	q.enqueue(60);
 	cout << q.front() << endl;
 	cout << q.getSize() << endl;
 	cout << q.isEmpty() << endl;
