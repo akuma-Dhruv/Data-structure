@@ -68,6 +68,17 @@ public:
 		}
 		return ans;
 	}
+
+void reverse()
+{
+    int i=capacity-1;
+    while(i>=0)
+    {
+
+        cout<<data[i]<<" ";
+        i--;
+    }
+}
 };
 int main()
 
@@ -79,10 +90,10 @@ cin>>s;
 	/*q.enqueue(20);
 	q.enqueue(30);
 	q.enqueue(40);
-	q.enqueue(50);
+	q.enqueue(50);0
 */
-
-	cout << q.front() << endl;
+q.reverse();
+	/*cout << q.front() << endl;
 	cout << q.dequeue() << endl;
 	cout << q.dequeue() << endl;
 	cout << q.dequeue() << endl;
@@ -91,4 +102,5 @@ cin>>s;
 	cout << q.front() << endl;
 	cout << q.getSize() << endl;
 	cout << q.isEmpty() << endl;
+*/
 }
