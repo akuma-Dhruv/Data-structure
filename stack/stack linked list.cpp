@@ -62,6 +62,14 @@ class Stack {
 	}
 
 };
+void reverse(Stack t1,Stack t2)
+{
+    while(!t1.isEmpty())
+    {
+        t2.push(t1.pop());
+        cout<<t2.top()<<" ";
+    }
+}
 int main()
 {
 Stack L;
@@ -72,11 +80,13 @@ L.push(4);
 L.push(9);
 cout<<L.getSize()<<endl;
 cout<<L.top()<<endl;
-cout<<L.pop()<<endl;
+/*cout<<L.pop()<<endl;
 cout<<L.pop()<<endl;
 cout<<L.pop()<<endl;
 
 cout<<L.isEmpty()<<endl;
-
+*/
+Stack K;
+reverse(L,K);
 
 }
