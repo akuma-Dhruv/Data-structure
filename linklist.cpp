@@ -94,7 +94,7 @@ Node* gettail(Node *head)
 	return tail;
 }
 Node* reverseLL(Node *head)
-{	//Return given llinked list in reverse order
+{
     int count=0;
         Node *temp = head;
         Node*tail;
@@ -102,7 +102,11 @@ Node* reverseLL(Node *head)
 	{
 		return head;
 	}
-		tail=gettail(head);
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+		count++;
+	}
 	int i=0;
 	temp=head;
 	Node*a,*b;
@@ -151,7 +155,7 @@ Node* append(Node *head,int e)
 	// if list is 1 2 3 4 5 \
 	and value of n(e) is 3 then \
 	output will be 3 4 5 1 2
-	
+
 	Node *tail;
 	int count=0;
 	int i=0;
@@ -164,7 +168,7 @@ Node* append(Node *head,int e)
 	tail->next=temp;
 	while(temp != NULL&&i<count-e-1)
     {
-		temp = temp -> next; 
+		temp = temp -> next;
 		i++;
 	}
 	Node *a=temp->next;
@@ -213,7 +217,7 @@ Node* midpoint(Node *head)
     }
 }
 Node* mergeL(Node* h1, Node* h2)
-//merge two sorted linked list 
+//merge two sorted linked list
 {	Node *result=NULL;
     if (!h1)
         return h2;
@@ -284,13 +288,13 @@ print(head);
 */
 //head =eliminate(head);
 //print(head);
-//head=reverseLL(head);
-//print(head);
+head=reverseLL(head);
+print(head);
 //midpoint(head);
 
 /* head1=mergeL(head1,head2);
 print(head1); */
 
-mergeS(&head);
-print(head);
+//mergeS(&head);
+//print(head);
 }

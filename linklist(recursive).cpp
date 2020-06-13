@@ -110,7 +110,7 @@ Node* reverseL(Node *head)
 {
 	if(head==NULL )
 	return head;
-    if(head->next=NULL)
+    if(head->next==NULL)
 	return head;
 
 
