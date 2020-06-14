@@ -28,4 +28,12 @@ int main()
      vector <int>::iterator it=v1.begin();
      //insert function
      vi.insert(it+4,35);
+	 //see how size and capacity works
+	 vector<int> v;
+
+	for (int i = 0; i < 100; i++) {
+		cout << "cap:" << v.capacity() << endl;
+		cout << "size:" << v.size() << endl;
+		v.push_back(i + 1);
+	}
 }
