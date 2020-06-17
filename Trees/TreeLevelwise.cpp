@@ -50,6 +50,17 @@ int getMax(TreeNode<int>* root,int Max=0)
 	return Max;
 }
 
+void printLevel(TreeNode<int>* root,int k)
+{
+    if(k==0)
+        cout<<root->data <<" ";
+    for(int i=0;i<root->child.size();i++)
+    {
+        printLevel(root->child[i],k-1);
+    }
+
+}
+
 TreeNode <int>* takeInputLevelWise()
 {
 int rooot;
@@ -82,5 +93,7 @@ return root;
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
-	cout<<getMax(root);
+	int k=0;
+	cin>>k;
+	printLevel(root,k);
 }
