@@ -2,7 +2,7 @@
 #include"TreeClass.cpp"
 #include<queue>
 using namespace std;
-void printTree(TreeNode<int>* root)         //recursively
+void print(TreeNode<int>* root)         //recursively
 {
 	if (root== NULL)
 		return;
@@ -17,6 +17,16 @@ void printTree(TreeNode<int>* root)         //recursively
 		print(root->child[i]);
 	}
 }
+int countNode(TreeNode<int>* root)
+{
+	int count =1;
+	for (int i=0;i<root->child.size();i++)
+	{
+		count+=countNode(root->child[i]);
+	}
+	return count;
+}
+
 TreeNode <int>* takeInputLevelWise()
 {
 int rooot;
@@ -34,7 +44,7 @@ while(pending.size()!=0)
 		cin >> numChild;
 		for (int i = 0; i < numChild; i++) {
 			int childData;
-			cout << "Enter " << i << "th child of " << front->data << endl;
+			cout << "Enter " << i+1 << "th child of " << front->data << endl;
 			cin >> childData;
 			TreeNode<int>* ch = new TreeNode<int>(childData);
 			front->child.push_back(ch);
@@ -47,5 +57,5 @@ return root;
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
-	print(root);
+	cout<<countNode(root);
 }
