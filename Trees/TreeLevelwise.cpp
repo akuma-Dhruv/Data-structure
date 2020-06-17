@@ -26,6 +26,7 @@ int countNode(TreeNode<int>* root)
 	}
 	return count;
 }
+
 int sumNode(TreeNode<int>* root)
 {
 	int count =root->data;
@@ -35,12 +36,27 @@ int sumNode(TreeNode<int>* root)
 	}
 	return count;
 }
+int getMax(TreeNode<int>* root,int Max=0)
+{
+	int count =root->data;
+	for (int i=0;i<root->child.size();i++)
+	{
+	if(Max<count)
+        Max=count;
+		count=getMax(root->child[i],Max);
+	}
+	if(count>Max)
+	return count;
+	return Max;
+}
 
 TreeNode <int>* takeInputLevelWise()
 {
 int rooot;
 cout<<"Enter Root data "<<endl;
 cin>>rooot;
+if(rooot==NULL)
+    return 0;
 TreeNode<int>* root= new TreeNode<int>(rooot);
 queue <TreeNode<int>*> pending;
 pending.push(root);
@@ -66,5 +82,5 @@ return root;
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
-	cout<<sumNode(root);
+	cout<<getMax(root);
 }
