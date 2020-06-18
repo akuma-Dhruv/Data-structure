@@ -90,10 +90,21 @@ while(pending.size()!=0)
 }
 return root;
 }
+int countLeaf(TreeNode<int>* root)
+{int count=0;
+    if(root->child.size()==0)
+        return 1;
+        for(int i=0;i<root->child.size();i++)
+    {
+        count+=countLeaf(root->child[i]);
+    }
+    return count;
+}
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
 	int k=0;
-	cin>>k;
-	printLevel(root,k);
+/**	cin>>k;
+	printLevel(root,k);*/
+cout<<countLeaf(root);
 }
