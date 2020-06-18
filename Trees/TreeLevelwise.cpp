@@ -18,7 +18,8 @@ void print(TreeNode<int>* root)         //recursively
 	}
 }
 int countNode(TreeNode<int>* root)
-{
+{ if (root==NULL)
+    return 0;
 	int count =1;
 	for (int i=0;i<root->child.size();i++)
 	{
@@ -28,7 +29,8 @@ int countNode(TreeNode<int>* root)
 }
 
 int sumNode(TreeNode<int>* root)
-{
+{       if (root==NULL)
+    return 0;
 	int count =root->data;
 	for (int i=0;i<root->child.size();i++)
 	{
@@ -37,7 +39,8 @@ int sumNode(TreeNode<int>* root)
 	return count;
 }
 int getMax(TreeNode<int>* root,int Max=0)
-{
+{       if (root==NULL)
+    return 0;
 	int count =root->data;
 	for (int i=0;i<root->child.size();i++)
 	{
@@ -51,7 +54,8 @@ int getMax(TreeNode<int>* root,int Max=0)
 }
 
 void printLevel(TreeNode<int>* root,int k)
-{
+{   if (root==NULL)
+    return;
     if(k==0)
         cout<<root->data <<" ";
     for(int i=0;i<root->child.size();i++)
@@ -91,7 +95,10 @@ while(pending.size()!=0)
 return root;
 }
 int countLeaf(TreeNode<int>* root)
-{int count=0;
+{
+    if (root==NULL)
+    return 0;
+    int count=0;
     if(root->child.size()==0)
         return 1;
         for(int i=0;i<root->child.size();i++)
@@ -100,11 +107,21 @@ int countLeaf(TreeNode<int>* root)
     }
     return count;
 }
+void postOrder(TreeNode <int>* root)
+{
+    for(int i=0;i<root->child.size();i++)
+    {
+        postOrder(root->child[i]);
+    }
+    cout<<root->data<<" ";
+}
+//10 3 20 30 40 2 40 50 0 0 0 0
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
 	int k=0;
 /**	cin>>k;
 	printLevel(root,k);*/
-cout<<countLeaf(root);
+//cout<<countLeaf(root);
+postOrder(root);
 }
