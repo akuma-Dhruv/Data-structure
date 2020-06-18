@@ -12,7 +12,7 @@ TreeNode(Y data)
 }
 ~ TreeNode()
 {
-    for(int i=0;i<child.size;i++)
+    for(int i=0;i<child.size();i++)
         delete child[i];
 
 }
