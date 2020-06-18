@@ -52,6 +52,21 @@ int getMax(TreeNode<int>* root,int Max=0)
 	return count;
 	return Max;
 }
+int height(TreeNode<int>* root)
+{
+ int max = 0;
+    int y=0;
+    for( int i=0;i<root->child.size();i++)
+    {
+
+
+            y=height(root->child[i]);
+        if (max <y )
+            max =y;
+    }
+    return max + 1;
+}
+
 
 void printLevel(TreeNode<int>* root,int k)
 {   if (root==NULL)
@@ -136,10 +151,12 @@ int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
 	int k=0;
-	cin>>k;
+	//cin>>k;
 /*	printLevel(root,k);*/
 //cout<<countLeaf(root);
 //postOrder(root);
-checkIf(root,k);
+//checkIf(root,k);
+
+cout<<height(root);
 delete root;
 }
