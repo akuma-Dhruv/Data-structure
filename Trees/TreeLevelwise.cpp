@@ -124,4 +124,5 @@ int main()
 	printLevel(root,k);*/
 //cout<<countLeaf(root);
 postOrder(root);
+delete root;
 }

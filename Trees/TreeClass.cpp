@@ -10,4 +10,10 @@ TreeNode(Y data)
 {
 	this->data = data;
 }
+~ TreeNode()
+{
+    for(int i=0;i<child.size;i++)
+        delete child[i];
+
+}
 };
