@@ -64,6 +64,22 @@ void printLevel(TreeNode<int>* root,int k)
     }
 
 }
+int checkIf(TreeNode<int>* root,int l)
+{ int num=root->data;
+        if(l==num)
+            {
+                cout<<"True";
+                return 0;
+            }
+
+    for (int i=0;i<root->child.size();i++)
+	{
+        num=checkIf(root->child[i],l);
+        if (num==0)
+            break;
+	}
+	return num;
+}
 
 TreeNode <int>* takeInputLevelWise()
 {
@@ -120,9 +136,10 @@ int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
 	int k=0;
-/**	cin>>k;
-	printLevel(root,k);*/
+	cin>>k;
+/*	printLevel(root,k);*/
 //cout<<countLeaf(root);
-postOrder(root);
+//postOrder(root);
+checkIf(root,k);
 delete root;
 }
