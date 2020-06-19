@@ -27,7 +27,28 @@ int countNode(TreeNode<int>* root)
 	}
 	return count;
 }
+void printLevelWise(TreeNode<int>* root)
+{
+    if(root==NULL)
+        return ;
+    queue <TreeNode<int>*> q;
+    int sum=0;
+    q.push(root);
+    while(!q.empty())
+    {
+        TreeNode<int>*temp=q.front();
+        q.pop();
+        cout<<temp->data<<":";
+        sum+=temp->data;
+        for(int i=0;i<temp->child.size();i++)
+        {
 
+            q.push(temp->child[i]);
+        }
+    cout<<endl;
+    }
+
+}
 int sumNode(TreeNode<int>* root)
 {       if (root==NULL)
     return 0;
@@ -66,7 +87,6 @@ int height(TreeNode<int>* root)
     }
     return max + 1;
 }
-
 
 void printLevel(TreeNode<int>* root,int k)
 {   if (root==NULL)
@@ -146,17 +166,18 @@ void postOrder(TreeNode <int>* root)
     }
     cout<<root->data<<" ";
 }
-//10 3 20 30 40 2 40 50 0 0 0 0
+//10 3 20 30 40 2 50 60 0 0 0 0
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
 	int k=0;
 	//cin>>k;
 /*	printLevel(root,k);*/
+printLevelWise(root);
 //cout<<countLeaf(root);
 //postOrder(root);
 //checkIf(root,k);
 
-cout<<height(root);
+//cout<<height(root);
 delete root;
 }
