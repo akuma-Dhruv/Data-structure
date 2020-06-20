@@ -32,14 +32,12 @@ void printLevelWise(TreeNode<int>* root)
     if(root==NULL)
         return ;
     queue <TreeNode<int>*> q;
-    int sum=0;
     q.push(root);
     while(!q.empty())
     {
         TreeNode<int>*temp=q.front();
         q.pop();
         cout<<temp->data<<":";
-        sum+=temp->data;
         for(int i=0;i<temp->child.size();i++)
         {
 
@@ -49,6 +47,28 @@ void printLevelWise(TreeNode<int>* root)
     }
 
 }
+/**
+vector<int> retarr(TreeNode<int>* root,vector<int>ar)
+{int r=root->data;
+
+    for(int i=0;i<root->child.size();i++)
+    {
+        ar[i]=r;
+        retarr(root->child[i],ar);
+
+    }
+    return ar;
+}
+///incomplete********
+*@incomplete
+///incomplete********
+void identical(TreeNode<int>* root1,TreeNode<int>* Root2)
+{
+    if(root1->child.size()!=Root2->child.size())
+        return;
+
+}
+*/
 int sumNode(TreeNode<int>* root)
 {       if (root==NULL)
     return 0;
@@ -170,14 +190,17 @@ void postOrder(TreeNode <int>* root)
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
-	int k=0;
 	//cin>>k;
 /*	printLevel(root,k);*/
-printLevelWise(root);
+//printLevelWise(root);
 //cout<<countLeaf(root);
 //postOrder(root);
 //checkIf(root,k);
 
 //cout<<height(root);
+vector<int> bc;
+retarr(root,bc);
+for(int i=0;i<bc.size();i++)
+cout<<bc.at(i);
 delete root;
 }
