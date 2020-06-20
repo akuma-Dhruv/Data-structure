@@ -5,7 +5,7 @@ public:
     T data;
     BinaryTree* left;
     BinaryTree* right;
-BinaryTreeNode(T data)
+BinaryTree(T data)
 {
     this->data=data;
     left=NULL;
