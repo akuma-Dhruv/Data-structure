@@ -63,9 +63,20 @@ BinaryTree<int>* takeInputLevelWise()
 
     return root;
 }
+int CountNodes(BinaryTree<int>* root)
+{
+    if(root==N)
+    {
+        return 0;
+
+    }
+    return 1+ CountNodes(root->L)+CountNodes(root->R);
+}
+//1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
 BinaryTree<int>* root =takeInputLevelWise();
 
 	print(root);
+	cout<<endl<<"Number of nodes = "<<CountNodes(root);
 }
