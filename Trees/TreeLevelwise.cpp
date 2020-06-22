@@ -47,28 +47,7 @@ void printLevelWise(TreeNode<int>* root)
     }
 
 }
-/**
-vector<int> retarr(TreeNode<int>* root,vector<int>ar)
-{int r=root->data;
 
-    for(int i=0;i<root->child.size();i++)
-    {
-        ar[i]=r;
-        retarr(root->child[i],ar);
-
-    }
-    return ar;
-}
-///incomplete********
-*@incomplete
-///incomplete********
-void identical(TreeNode<int>* root1,TreeNode<int>* Root2)
-{
-    if(root1->child.size()!=Root2->child.size())
-        return;
-
-}
-*/
 int sumNode(TreeNode<int>* root)
 {       if (root==NULL)
     return 0;
@@ -186,10 +165,64 @@ void postOrder(TreeNode <int>* root)
     }
     cout<<root->data<<" ";
 }
+void identical(TreeNode<int>* root1,TreeNode<int>* root2)
+{
+    if(root1->child.size()!=root2->child.size())
+        {
+            cout<<"False";
+            return;
+        }
+        vector<int> ar1,ar2;
+        //for first tree
+        if(root1==NULL)
+        return ;
+    queue <TreeNode<int>*> q;
+    q.push(root1);
+    while(!q.empty())
+    {
+        TreeNode<int>*temp=q.front();
+        q.pop();
+        ar1.push_back(temp->data);
+        for(int i=0;i<temp->child.size();i++)
+        {
+
+            q.push(temp->child[i]);
+        }
+    }
+    //for second tree
+    //q.clear();
+    q.push(root2);
+    while(!q.empty())
+    {
+        TreeNode<int>*temp=q.front();
+        q.pop();
+        ar2.push_back(temp->data);
+        for(int i=0;i<temp->child.size();i++)
+        {
+
+            q.push(temp->child[i]);
+        }
+    }
+
+    int i=0,flag=1;
+    while(i<ar1.size())
+    {
+        if(ar1.at(i)!=ar2.at(i))
+            flag++;
+        i++;
+    }
+    if(flag>1)
+        cout<<"False"<<endl;
+    else
+        cout<<"True"<<endl;
+
+
+}
 //10 3 20 30 40 2 50 60 0 0 0 0
 int main()
 {
 	TreeNode<int>* root = takeInputLevelWise();
+	TreeNode<int>* root2 = takeInputLevelWise();
 	//cin>>k;
 /*	printLevel(root,k);*/
 //printLevelWise(root);
@@ -198,9 +231,7 @@ int main()
 //checkIf(root,k);
 
 //cout<<height(root);
-vector<int> bc;
-retarr(root,bc);
-for(int i=0;i<bc.size();i++)
-cout<<bc.at(i);
+identical(root,root2);
 delete root;
+delete root2;
 }
