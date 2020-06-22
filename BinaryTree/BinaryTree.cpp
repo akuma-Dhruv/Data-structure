@@ -3,6 +3,7 @@
  #include<queue>
  using namespace std;
 #define N NULL
+#define BT BinaryTree<int>
 #define L left
 #define R right
 #define D data
@@ -24,6 +25,14 @@ if (root->L!=N) {
 print(root->L);
 print(root->R);
 
+}
+void inorder(BT* root)
+{
+    if(root==N)
+        return;
+    inorder(root->L);
+    cout<<root->D<<" ";
+    inorder(root->R);
 }
 BinaryTree<int>* takeInputLevelWise()
 {
@@ -78,5 +87,7 @@ int main()
 BinaryTree<int>* root =takeInputLevelWise();
 
 	print(root);
-	cout<<endl<<"Number of nodes = "<<CountNodes(root);
+	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
+	inorder(root);
+	delete root;
 }
