@@ -86,7 +86,7 @@ while(!pending.empty())
     if(temp->L!=N)
     {
         pending.push(temp->L);
-        cout<<temp->L->data;
+        cout<<temp->L->data<<" ";
     }
     if(temp->R!=N)
     {
@@ -106,6 +106,20 @@ int CountNodes(BT* root)
     }
     return 1+ CountNodes(root->L)+CountNodes(root->R);
 }
+void findNode(BT* root,int num)
+{
+	if(root==N)
+    {
+        return;
+    }
+	int r;
+r=root->D;
+if(r==num)
+	cout<<"true";
+findNode(root->L,num);
+findNode(root->R,num);
+}
+
 //1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
@@ -114,7 +128,8 @@ BinaryTree<int>* root =takeInputLevelWise();
 	print(root);
 	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
 	inorder(root);
-cout<<endl;
+    cout<<endl;
 	printLevelWise(root);
+	findNode(root,30);
 	delete root;
 }
