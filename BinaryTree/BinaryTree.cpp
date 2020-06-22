@@ -72,7 +72,32 @@ BinaryTree<int>* takeInputLevelWise()
 
     return root;
 }
-int CountNodes(BinaryTree<int>* root)
+void printLevelWise(BT* root)
+{
+if (root==N)
+    return;
+queue <BT*>pending;
+pending.push(root);
+while(!pending.empty())
+{
+    BT* temp=pending.front();
+    cout<<temp->data<<":";
+    pending.pop();
+    if(temp->L!=N)
+    {
+        pending.push(temp->L);
+        cout<<temp->L->data;
+    }
+    if(temp->R!=N)
+    {
+        pending.push(temp->R);
+        cout<<temp->R->data;
+    }
+    cout<<endl;
+
+}
+}
+int CountNodes(BT* root)
 {
     if(root==N)
     {
@@ -89,5 +114,7 @@ BinaryTree<int>* root =takeInputLevelWise();
 	print(root);
 	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
 	inorder(root);
+cout<<endl;
+	printLevelWise(root);
 	delete root;
 }
