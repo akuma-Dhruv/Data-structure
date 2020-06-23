@@ -132,8 +132,17 @@ if(RD>LD)
 else
 	return 1+LD;
 }
-
-
+void mirror(BT* root)
+{
+    if(root==N)
+        return;
+    BT* temp;
+    temp=root->L;
+    root->L=root->R;
+    root->R=temp;
+    mirror(root->L);
+    mirror(root->R);
+}
 //1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 //10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
 int main()
@@ -142,10 +151,11 @@ BinaryTree<int>* root =takeInputLevelWise();
 
 	print(root);
 	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
-	inorder(root);
+	//inorder(root);
     cout<<endl;
+    mirror(root);
 	printLevelWise(root);
 	//findNode(root,30);
-	cout<<height(root);
+	//cout<<height(root);
 	delete root;
 }
