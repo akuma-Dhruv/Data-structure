@@ -120,7 +120,22 @@ findNode(root->L,num);
 findNode(root->R,num);
 }
 
+int height(BT* root)
+{
+    if(root==N)
+	return 0;
+
+int LD=height(root->L);
+int RD=height(root->R);
+if(RD>LD)
+	return 1+RD;
+else
+	return 1+LD;
+}
+
+
 //1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+//10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
 int main()
 {
 BinaryTree<int>* root =takeInputLevelWise();
@@ -130,6 +145,7 @@ BinaryTree<int>* root =takeInputLevelWise();
 	inorder(root);
     cout<<endl;
 	printLevelWise(root);
-	findNode(root,30);
+	//findNode(root,30);
+	cout<<height(root);
 	delete root;
 }
