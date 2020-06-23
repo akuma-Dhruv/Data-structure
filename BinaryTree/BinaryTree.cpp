@@ -143,19 +143,31 @@ void mirror(BT* root)
     mirror(root->L);
     mirror(root->R);
 }
-//1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
-//10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
+void preorder(BT* root)
+{
+    if (root==N)
+        return;
+    cout<<root->data<<" ";
+    preorder(root->L);
+    preorder(root->R);
+}
+///1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+///10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
+///8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
+
+//driver function
 int main()
 {
 BinaryTree<int>* root =takeInputLevelWise();
 
-	print(root);
+	//print(root);
 	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
 	//inorder(root);
     cout<<endl;
-    mirror(root);
-	printLevelWise(root);
+    //mirror(root);
+	//printLevelWise(root);
 	//findNode(root,30);
 	//cout<<height(root);
+	preorder(root);
 	delete root;
 }
