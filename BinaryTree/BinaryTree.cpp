@@ -151,6 +151,14 @@ void preorder(BT* root)
     preorder(root->L);
     preorder(root->R);
 }
+void postorder(BT* root)
+{
+    if (root==N)
+        return;
+    postorder(root->L);
+    postorder(root->R);
+    cout<<root->data<<" ";
+}
 ///1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
 ///8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
@@ -168,6 +176,7 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//printLevelWise(root);
 	//findNode(root,30);
 	//cout<<height(root);
-	preorder(root);
+	//preorder(root);
+	postorder(root);
 	delete root;
 }
