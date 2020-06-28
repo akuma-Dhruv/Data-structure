@@ -159,7 +159,7 @@ void postorder(BT* root)
     postorder(root->R);
     cout<<root->data<<" ";
 }
-int diameter(BinaryTreeNode<int>* root) {
+int diameter(BinaryTree<int>* root) {
 	if (root == NULL) {
 		return 0;
 	}
@@ -168,6 +168,28 @@ int diameter(BinaryTreeNode<int>* root) {
 	int option2 = diameter(root->left);
 	int option3 = diameter(root->right);
 	return max(option1, max(option2, option3));
+}
+
+pair<int,int> heightDiameter(BinaryTree<int> *root)
+{       ///better time Complexity
+    pair<int,int> p;
+    if(root==N)
+    {
+        p.first=0;
+        p.second=0;
+        return p;
+    }
+    pair<int,int> left = heightDiameter(root->L);
+    pair<int,int> right = heightDiameter(root->R);
+    int ld = left.second;
+    int rd = right.second;
+    int lh = left.first;
+    int rh = right.first;
+    int h=1+max(lh,rh);
+    int d=max(lh+rh,max(rd,ld));
+    p.first=h;
+    p.second=d;
+    return p;
 }
 /***
 BinaryTreeNode<int>* buildTreeHelper()
@@ -191,12 +213,15 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//print(root);
 	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
 	//inorder(root);
-    cout<<endl;
+//    cout<<endl;
     //mirror(root);
-	//printLevelWise(root);
 	//findNode(root,30);
 	//cout<<height(root);
 	//preorder(root);
-	postorder(root);
+	pair<int,int>p=heightDiameter(root);
+	cout<<"height "<<p.first<<endl;
+	cout<<"Diameter "<<p.second<<endl;
+
+	printLevelWise(root);
 	delete root;
 }
