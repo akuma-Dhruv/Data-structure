@@ -66,10 +66,7 @@ BinaryTree<int>* takeInputLevelWise()
             front->R=child;
             pending.push(child);
         }
-
-
     }
-
     return root;
 }
 void printLevelWise(BT* root)
@@ -275,6 +272,16 @@ while(!pending.empty())
     }
 }
 }
+int countLeaf(BT* root)
+{
+    if(root==N)
+        return 0;
+    int l=countLeaf(root->L);
+    int R=countLeaf(root->R);
+    if(root->left==N&&root->R==N)
+    return 1+l+R;
+    return l+R;
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -314,7 +321,9 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//printLevelWise(root);
 	//cout<<sumNodes(root)<<endl;
 	//isIdentical(root);
-    levelorder(root);
+	printLevelWise(root);
+    //levelorder(root);
+	cout<<countLeaf(root)<<endl;
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
