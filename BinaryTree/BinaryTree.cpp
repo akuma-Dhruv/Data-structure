@@ -206,6 +206,23 @@ int getmax(BT* root)
         max=root->data;
     return max;
 }
+int getmin(BT* root)
+{
+    if(root==N)
+        return INT_MAX;
+    int lmin=0,rmin=0,min;
+    lmin=getmin(root->L);
+    rmin=getmin(root->R);
+
+    //calc part
+    if(lmin<rmin)
+        min=lmin;
+    else
+        min=rmin;
+    if(root->D<min)
+        min=root->D;
+    return min;
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -240,7 +257,8 @@ BinaryTree<int>* root =takeInputLevelWise();
 	pair<int,int>p=heightDiameter(root);
 	cout<<"height "<<p.first<<endl;
 	cout<<"Diameter "<<p.second<<endl;*/
-	cout<<getmax()<<endl;
+	cout<<getmax(root)<<endl;
+	cout<<getmin(root)<<endl;
 	printLevelWise(root);
 	delete root;
 cout<<"Enter 1 to exit::";
