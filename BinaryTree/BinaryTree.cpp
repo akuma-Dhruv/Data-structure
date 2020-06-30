@@ -86,12 +86,12 @@ while(!pending.empty())
     if(temp->L!=N)
     {
         pending.push(temp->L);
-        cout<<temp->L->data<<" ";
+        cout<<"L"<<temp->L->data;
     }
     if(temp->R!=N)
     {
         pending.push(temp->R);
-        cout<<temp->R->data;
+        cout<<" R"<<temp->R->data;
     }
     cout<<endl;
 
@@ -100,10 +100,7 @@ while(!pending.empty())
 int CountNodes(BT* root)
 {
     if(root==N)
-    {
-        return 0;
-
-    }
+    return 0;
     return 1+ CountNodes(root->L)+CountNodes(root->R);
 }
 void findNode(BT* root,int num)
@@ -232,6 +229,20 @@ int sumNodes(BT* root)
     int rpart=sumNodes(root->R);
 return p+lpart+rpart;
 }
+void isIdentical(BT* root)
+{
+    if(root==N)
+        return;
+    int lheight=height(root->L);
+    int rheight=height(root->R);
+    int lcount=CountNodes(root->L);
+    int rcount=CountNodes(root->R);
+    if (lheight==rheight&&lcount==rcount)
+        cout<<"True"<<endl;
+    else
+    cout<<"false"<<endl;
+
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -269,7 +280,9 @@ BinaryTree<int>* root =takeInputLevelWise();
 	cout<<getmax(root)<<endl;
 	cout<<getmin(root)<<endl;
 	printLevelWise(root);
-	cout<<sumNodes(root);
+	cout<<sumNodes(root)<<endl;
+	isIdentical(root);
+
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
