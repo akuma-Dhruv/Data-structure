@@ -243,6 +243,38 @@ void isIdentical(BT* root)
     cout<<"false"<<endl;
 
 }
+void levelorder(BT* root)
+{
+if (root==N)
+    return;
+queue <BT*>pending;
+BT* point=new BT(-1);
+pending.push(root);
+pending.push(point);
+
+while(!pending.empty())
+{
+    BT* temp=pending.front();
+    cout<<temp->data<<" ";
+    pending.pop();
+    if(temp->L!=N)
+    {
+        pending.push(temp->L);
+    }
+    if(temp->R!=N)
+    {
+        pending.push(temp->R);
+    }
+    BT* check=pending.front();
+    if(check->D==-1)
+    {
+    cout<<endl;
+    pending.pop();
+    if(!pending.empty())
+    pending.push(point);
+    }
+}
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -266,7 +298,7 @@ while(i!=1)
 BinaryTree<int>* root =takeInputLevelWise();
 
 	//print(root);
-	cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
+	//cout<<endl<<"Number of nodes = "<<CountNodes(root)<<endl;
 	//inorder(root);
 //    cout<<endl;
     //mirror(root);
@@ -277,12 +309,12 @@ BinaryTree<int>* root =takeInputLevelWise();
 	pair<int,int>p=heightDiameter(root);
 	cout<<"height "<<p.first<<endl;
 	cout<<"Diameter "<<p.second<<endl;*/
-	cout<<getmax(root)<<endl;
-	cout<<getmin(root)<<endl;
-	printLevelWise(root);
-	cout<<sumNodes(root)<<endl;
-	isIdentical(root);
-
+	//cout<<getmax(root)<<endl;
+	//cout<<getmin(root)<<endl;
+	//printLevelWise(root);
+	//cout<<sumNodes(root)<<endl;
+	//isIdentical(root);
+    levelorder(root);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
