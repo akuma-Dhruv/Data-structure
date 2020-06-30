@@ -223,6 +223,15 @@ int getmin(BT* root)
         min=root->D;
     return min;
 }
+int sumNodes(BT* root)
+{
+    if(root==N)
+        return 0;
+    int p=root->D;
+    int lpart=sumNodes(root->L);
+    int rpart=sumNodes(root->R);
+return p+lpart+rpart;
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -260,6 +269,7 @@ BinaryTree<int>* root =takeInputLevelWise();
 	cout<<getmax(root)<<endl;
 	cout<<getmin(root)<<endl;
 	printLevelWise(root);
+	cout<<sumNodes(root);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
