@@ -293,6 +293,16 @@ BT* deleteLeaf(BT* root)
   root->R= deleteLeaf(root->R);
     return root;
 }
+void printleafs(BT* root)
+{
+    //will print all leaf nodes
+    if(root==N)
+        return;
+    printleafs(root->L);
+    printleafs(root->R);
+    if(root->L==N&&root->R==N)
+    cout<<root->data<<" ";
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -323,19 +333,16 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//findNode(root,30);
 	//cout<<height(root);
 	//preorder(root);
-	/*
-	pair<int,int>p=heightDiameter(root);
-	cout<<"height "<<p.first<<endl;
-	cout<<"Diameter "<<p.second<<endl;*/
 	//cout<<getmax(root)<<endl;
 	//cout<<getmin(root)<<endl;
 	//printLevelWise(root);
 	//cout<<sumNodes(root)<<endl;
 	//isIdentical(root);
-    levelorder(root);
-	root=deleteLeaf(root);
+    //levelorder(root);
+	//root=deleteLeaf(root);
 	//printLevelWise(root);
-    levelorder(root);
+    //levelorder(root);
+	printleafs(root);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
