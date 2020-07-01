@@ -282,6 +282,17 @@ int countLeaf(BT* root)
     return 1+l+R;
     return l+R;
 }
+BT* deleteLeaf(BT* root)
+{
+    if(root==N)
+        return 0;
+    if(root->left==N&&root->R==N)
+    {free(root);
+    return N;}
+  root->L=  deleteLeaf(root->L);
+  root->R= deleteLeaf(root->R);
+    return root;
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -321,9 +332,10 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//printLevelWise(root);
 	//cout<<sumNodes(root)<<endl;
 	//isIdentical(root);
-	printLevelWise(root);
-    //levelorder(root);
-	cout<<countLeaf(root)<<endl;
+    levelorder(root);
+	root=deleteLeaf(root);
+	//printLevelWise(root);
+    levelorder(root);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
