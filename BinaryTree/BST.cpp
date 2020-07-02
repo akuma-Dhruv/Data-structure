@@ -1,5 +1,6 @@
  #include<iostream>
  #include"BinaryTreeClass.h"
+ #include<queue>
  using namespace std;
 #define N NULL
 #define BT BinaryTree<int>
@@ -68,3 +69,33 @@ while(!pending.empty())
 }
 }
 
+void searchBT(BT* root,int p)
+{
+    if(root==N)
+    {
+        cout<<"false"<<endl;
+        return;
+    }
+    if(root->D==p)
+    {
+        cout<<"True"<<endl;
+        return;
+    }
+    else if(root->D>p)
+        searchBT(root->L,p);
+    else if(root->D<p)
+        searchBT(root->R,p);
+    else
+        cout<<"false"<<endl;
+    return;
+}
+
+///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
+int main()
+{
+	BT* root =takeInputLevelWise();
+	int p;
+	cout<<"enter element for search ";
+	cin>>p;
+	searchBT(root,p);
+}
