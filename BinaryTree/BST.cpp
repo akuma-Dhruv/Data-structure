@@ -89,13 +89,31 @@ void searchBT(BT* root,int p)
         cout<<"false"<<endl;
     return;
 }
+void printInRange(BT* root,int l,int u)
+{
+    ///not working properly
+    if(root==N)
+        return;
+    if((root->D>=l) && (root->D<= u))
+        cout<<root->D<<" ";
+    if(root->D<u)
+        printInRange(root->R,l,u);
+    if (root->D>u)
+        printInRange(root->L,l,u);
+
+	if(root->D>l)
+        printInRange(root->L,l,u);
+   if(root->D<l)
+        printInRange(root->R,l,u);
+
+}
 
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
 	BT* root =takeInputLevelWise();
-	int p;
+	int p,u;
 	cout<<"enter element for search ";
-	cin>>p;
-	searchBT(root,p);
+	cin>>p>>u;
+	printInRange(root,p,u);
 }
