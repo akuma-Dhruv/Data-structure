@@ -108,6 +108,13 @@ int maximum(BT* root)
         return(max (root->D,max(maximum(root->L),maximum(root->R))));
 
 }
+int minimum(BT* root)
+{
+    if(root==N)
+        return INT_MAX;
+        return(min (root->D,min(minimum(root->L),minimum(root->R))));
+
+}
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
@@ -116,5 +123,5 @@ int main()
 	//cout<<"enter range: ";
 	//cin>>p>>u;
 	//printInRange(root,p,u);
-    cout<<maximum(root);
+    cout<<minimum(root);
 }
