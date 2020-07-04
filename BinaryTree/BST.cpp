@@ -101,13 +101,20 @@ void printInRange(BT* root,int l,int u)
     if (root->D>u||root->D>l)
         printInRange(root->L,l,u);
 }
+int maximum(BT* root)
+{
+    if(root==N)
+        return INT_MIN;
+        return(max (root->D,max(maximum(root->L),maximum(root->R))));
 
+}
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
 	BT* root =takeInputLevelWise();
-	int p,u;
-	cout<<"enter range:";
-	cin>>p>>u;
-	printInRange(root,p,u);
+	//int p,u;
+	//cout<<"enter range: ";
+	//cin>>p>>u;
+	//printInRange(root,p,u);
+    cout<<maximum(root);
 }
