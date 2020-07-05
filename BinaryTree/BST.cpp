@@ -115,7 +115,18 @@ int minimum(BT* root)
         return(min (root->D,min(minimum(root->L),minimum(root->R))));
 
 }
+bool isbst(BT* root)
+{
+    if(root==N)
+        return true;
+    int l=maximum(root->left);
+    int r= minimum(root->right);
+    bool result = ((root->D > l) && (root->D <= r) && isbst(root->L) && isbst(root->R));
+    return result;
+    // but time complexity is poor
+}
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
+///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
 	BT* root =takeInputLevelWise();
@@ -123,5 +134,5 @@ int main()
 	//cout<<"enter range: ";
 	//cin>>p>>u;
 	//printInRange(root,p,u);
-    cout<<minimum(root);
+    cout<<isBST(root);
 }
