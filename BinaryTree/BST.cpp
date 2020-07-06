@@ -16,7 +16,7 @@ BinaryTree<int>* takeInputLevelWise()				///for input
     if(rootdata==N)
       return N;
     BinaryTree<int>* root = new BinaryTree<int> (rootdata);
-    queue <BinaryTree<int>*> pending;
+    queue <BT*> pending;
     pending.push(root);
     while(pending.size()!=0)
     {
@@ -132,20 +132,36 @@ bool isBST2(BT* root, int min = INT_MIN, int max = INT_MAX) {
 	if (root->data < min || root->data > max) {
 		return false;
 	}
-	bool isLeftOk = isBST3(root->left, min, root->data - 1);
-	bool isRightOk = isBST3(root->right, root->data, max);
+	bool isLeftOk = isBST2(root->left, min, root->data - 1);
+	bool isRightOk = isBST2(root->right, root->data, max);
 	return isLeftOk && isRightOk;
 //better time complexity and approach
 
+}
+BT* constructBinaryTree(int *arr,int si,int ei)
+{
+    int mid=(ei+si)/2;
+    //cout<<mid<<endl;
+      if(ei<si)
+        return N;
+    BT* root= new BT(arr[mid]);
+   root->L=constructBinaryTree(arr,si,mid-1);
+    root->R=constructBinaryTree(arr,mid+1,ei);
+    return root;
 }
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
-	BT* root =takeInputLevelWise();
+	//BT* root =takeInputLevelWise();
 	//int p,u;
 	//cout<<"enter range: ";
 	//cin>>p>>u;
 	//printInRange(root,p,u);
-    cout<<isbst(root);
+	int ar[]={1,2,3,4,5,6,7};
+	int ei=sizeof(ar)/sizeof(int);
+	//cout<<ei;
+	BT* root=constructBinaryTree(ar,0,ei-1);
+	printLevelWise(root);
+    //cout<<isbst(root);
 }
