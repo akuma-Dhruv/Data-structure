@@ -125,6 +125,19 @@ bool isbst(BT* root)
     return result;
     // but time complexity is poor
 }
+bool isBST2(BT* root, int min = INT_MIN, int max = INT_MAX) {
+	if (root == N) {
+		return true;
+	}
+	if (root->data < min || root->data > max) {
+		return false;
+	}
+	bool isLeftOk = isBST3(root->left, min, root->data - 1);
+	bool isRightOk = isBST3(root->right, root->data, max);
+	return isLeftOk && isRightOk;
+//better time complexity and approach
+
+}
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
@@ -134,5 +147,5 @@ int main()
 	//cout<<"enter range: ";
 	//cin>>p>>u;
 	//printInRange(root,p,u);
-    cout<<isBST(root);
+    cout<<isbst(root);
 }
