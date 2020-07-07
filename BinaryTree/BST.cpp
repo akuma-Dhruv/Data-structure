@@ -1,5 +1,6 @@
  #include<iostream>
  #include"BinaryTreeClass.h"
+ #include"Linkedlist.h"
  #include<queue>
  using namespace std;
 #define N NULL
@@ -7,7 +8,6 @@
 #define L left
 #define R right
 #define D data
-
 BinaryTree<int>* takeInputLevelWise()				///for input
 {
     int rootdata;
@@ -149,6 +149,21 @@ BT* constructBinaryTree(int *arr,int si,int ei)
     root->R=constructBinaryTree(arr,mid+1,ei);
     return root;
 }
+pair<Node*> listFromTree(BT*root)
+{
+    if(root==N)
+        return N;
+    Node *temp=new Node(root->D);
+    pair<Node*> head;
+    pair<Node*> leftP=listFromTree(root->L);
+    pair<Node*> rightP=listFromTree(root->R);
+
+    temp->next=rightL;
+    leftL->next=temp;
+    return
+///incomplete
+}
+
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
@@ -164,4 +179,5 @@ int main()
 	BT* root=constructBinaryTree(ar,0,ei-1);
 	printLevelWise(root);
     //cout<<isbst(root);
+	delete root;
 }
