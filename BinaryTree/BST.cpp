@@ -149,29 +149,40 @@ BT* constructBinaryTree(int *arr,int si,int ei)
     root->R=constructBinaryTree(arr,mid+1,ei);
     return root;
 }
+Node* gettail(Node *head)
+{	//return tail of the given linked list
+	Node *tail;
+	Node *temp = head;
+		while(temp != NULL)
+    {   tail=temp;
+		temp = temp -> next;
+	}
+	return tail;
+}
 Node* listFromTree(BT*root)
 {
     if(root==N)
         return N;
     Node *temp=new Node(root->D);
+    Node* tail;
     Node* head;
-    /*Node* leftL=listFromTree(root->L);
+    Node* leftL=listFromTree(root->L);
     Node* rightL=listFromTree(root->R);
-    if(leftL->next!=N)
-    {
+    if(leftL!=N)
+  {
+
+    tail=gettail(leftL);
+        tail->next=temp;
         head=leftL;
-        while (leftL->next!=N)
-            leftL=leftL->next;
-    }
-    else*/
-        return temp;
+  }
+  else
+    head = temp;
+    if(rightL!=N)
+        temp->next=rightL;
+        return head;
 
-    /*temp->next=rightL;
-    leftL->next=temp;
-    return head;*/
-///incomplete
 }
-
+*/
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
