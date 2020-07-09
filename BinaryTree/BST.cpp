@@ -149,18 +149,26 @@ BT* constructBinaryTree(int *arr,int si,int ei)
     root->R=constructBinaryTree(arr,mid+1,ei);
     return root;
 }
-pair<Node*> listFromTree(BT*root)
+Node* listFromTree(BT*root)
 {
     if(root==N)
         return N;
     Node *temp=new Node(root->D);
-    pair<Node*> head;
-    pair<Node*> leftP=listFromTree(root->L);
-    pair<Node*> rightP=listFromTree(root->R);
+    Node* head;
+    /*Node* leftL=listFromTree(root->L);
+    Node* rightL=listFromTree(root->R);
+    if(leftL->next!=N)
+    {
+        head=leftL;
+        while (leftL->next!=N)
+            leftL=leftL->next;
+    }
+    else*/
+        return temp;
 
-    temp->next=rightL;
+    /*temp->next=rightL;
     leftL->next=temp;
-    return
+    return head;*/
 ///incomplete
 }
 
@@ -177,7 +185,9 @@ int main()
 	int ei=sizeof(ar)/sizeof(int);
 	//cout<<ei;
 	BT* root=constructBinaryTree(ar,0,ei-1);
-	printLevelWise(root);
+	//printLevelWise(root);
     //cout<<isbst(root);
+	Node *h=listFromTree(root);
+    h->printLL(h);
 	delete root;
 }
