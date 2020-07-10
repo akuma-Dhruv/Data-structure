@@ -303,6 +303,32 @@ void printleafs(BT* root)
     if(root->L==N&&root->R==N)
     cout<<root->data<<" ";
 }
+
+vector<int>* getRootToNodePath(BT* root, int data) {
+	if (root == NULL) {
+		return NULL;
+	}
+
+	if (root->data == data) {
+		vector<int>* output = new vector<int>();
+		output->push_back(root->data);
+		return output;
+	}
+
+	vector<int>* leftOutput = getRootToNodePath(root->left, data);
+	if (leftOutput != NULL) {
+		leftOutput->push_back(root->data);
+		return leftOutput;
+	}
+
+	vector<int>* rightOutput = getRootToNodePath(root->right, data);
+	if (rightOutput != NULL) {
+			rightOutput->push_back(root->data);
+			return rightOutput;
+	} else {
+		return NULL;
+	}
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -340,9 +366,13 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//isIdentical(root);
     //levelorder(root);
 	//root=deleteLeaf(root);
+	vector<int>*output =getRootToNodePath(root,5);
+	for(int r=0;r<output->size();r++)
+        cout<<output->at(r)<<" ";
 	//printLevelWise(root);
     //levelorder(root);
-	printleafs(root);
+
+	//printleafs(root);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
