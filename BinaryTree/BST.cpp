@@ -182,7 +182,39 @@ Node* listFromTree(BT*root)
         return head;
 
 }
-*/
+vector<int>* getRootToNodePath(BT* root, int data) {
+	if (root == NULL)
+    {
+		return NULL;
+	}
+
+	if (root->data == data) {
+		vector<int>* output = new vector<int>();
+		output->push_back(root->data);
+		return output;
+	}
+
+	vector<int>* RightOutput ;
+	 if(root->D<data)
+	{
+	     RightOutput = getRootToNodePath(root->right, data);
+	    if(RightOutput!=N)
+        {
+            RightOutput->push_back(root->data);            return RightOutput;
+        }
+	}
+	vector<int>* leftOutput ;
+	if(root->D>data)
+	{
+    leftOutput = getRootToNodePath(root->left, data);
+	    if(leftOutput!=N)
+{
+         leftOutput->push_back(root->data);
+            return leftOutput;
+}
+}
+else return N;
+}
 ///4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 ///4 2 6 10 3 5 2 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
@@ -200,5 +232,10 @@ int main()
     //cout<<isbst(root);
 	Node *h=listFromTree(root);
     h->printLL(h);
+    cout<<endl;
+    vector<int>*output =getRootToNodePath(root,5);
+	for(int r=0;r<output->size();r++)
+        cout<<output->at(r)<<" ";
+	delete output;
 	delete root;
 }
