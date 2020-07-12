@@ -4,6 +4,7 @@
     int main()
     {
     BSTclass b;
-   cout<< b.hasData(5);
-
+    b.insert(4);
+    b.insert(5);
+    cout<< b.hasData(4);
     }
