@@ -1,5 +1,11 @@
 #include "BinaryTreeClass.h"
 using namespace std;
+#define N NULL
+#define L left
+#define R right
+#define BT BinaryTree<int>
+
+
 class BSTclass {
 	BinaryTree<int>* root;
 
@@ -43,6 +49,52 @@ class BSTclass {
 		}
 	}
 
+	BinaryTree<int>* removeE(BinaryTree<int>* node,int e)
+	{
+	    if(node==N)
+            return N;
+
+            if(e>node->data)
+            {
+                node->R=removeE(node->R,e);
+            }
+            else if(e<node->data)
+            {
+                node->L=removeE(node->L,e);
+            }
+            else{
+
+            if(node->data==e && node->L==N && node->R!=N)
+            {
+               BT* temp= node->right;
+               node->R=N;
+               delete node;
+               return temp;
+            }
+
+           else if(node->data==e && node->L!=N && node->R==N)
+            {
+               BT* temp= node->L;
+               node->L=N;
+               delete node;
+               return temp;
+            }
+            else if(node->data==e && node->L!=N && node->R!=N)
+             {
+                 int minimum;
+                 BT* temp;
+                 temp=node->R;
+                 while(temp->L!=N)
+                 {
+                     temp=temp->L;
+                 }
+                 minimum=temp->data;
+                 node->data=minimum;
+                 node->R=removeE(node->R,minimum);
+                 return node;
+                 }
+            }
+	}
 	public:
 	bool hasData(int data) {
 		return hasData(data, root);
@@ -52,5 +104,9 @@ class BSTclass {
 	{
 	    this->root = insert(data,this->root);
 
+	}
+	void removeE(int data)
+	{
+    this->root= removeE(root,data);
 	}
 };
