@@ -329,6 +329,22 @@ vector<int>* getRootToNodePath(BT* root, int data) {
 		return NULL;
 	}
 }
+int getdept(BT* root,int e)
+{
+    if(root==NULL)
+    {
+     return 0;
+    }
+    if(root->data==e)
+    {
+        return 1;
+    }
+    int re=(getdept(root->left,e)+getdept(root->right,e));
+    if(re!=0)
+        re++;
+    return re;
+
+}
 /***
 BinaryTreeNode<int>* buildTreeHelper()
 {}
@@ -366,13 +382,15 @@ BinaryTree<int>* root =takeInputLevelWise();
 	//isIdentical(root);
     //levelorder(root);
 	//root=deleteLeaf(root);
-	vector<int>*output =getRootToNodePath(root,5);
+	/*vector<int>*output =getRootToNodePath(root,5);
 	for(int r=0;r<output->size();r++)
         cout<<output->at(r)<<" ";
+	*/
 	//printLevelWise(root);
     //levelorder(root);
 
 	//printleafs(root);
+	cout<<getdept(root,5);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
