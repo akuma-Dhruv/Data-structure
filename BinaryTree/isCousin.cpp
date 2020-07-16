@@ -62,27 +62,36 @@ BinaryTree<int>* getparent(BinaryTree<int>* root,int e)
 {
     if(root==N)
         return N;
-        if(root->L->D==e||root->R->D==e)
+        if(root->L!=N)
+        {
+            if(root->L->D==e)
+                return root;
+        }
+        else if(root->R!=N)
+        {
+        if(root->R->D==e)
         {
             return root;
         }
-            //unable to handle recursion
+        }
+
             BT* LO=getparent(root->left,e);
             if(LO!=N)
                 return LO;
             BT* RO=getparent(root->right,e);
                 if(RO!=N)
                 return RO;
-            else
+
             return N;
 
 
 }
 
+///1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 -1 24 -1 26 27 -1 28 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 29 -1 -1 -1 -1 -1 30 -1 -1 -1 -1 -1 -1 -1 -1 -1
 int main()
 {
     BinaryTree<int>*root=takeInputLevelWise();
-    BT* g=getparent(root,4);
+    BT* g=getparent(root,30);
     cout<<g->D;
 
 
