@@ -356,6 +356,7 @@ BinaryTreeNode<int>* buildTree()
 */
 
 ///1 2 3 99 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+///1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 -1 24 -1 26 27 -1 28 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 29 -1 -1 -1 -1 -1 30 -1 -1 -1 -1 -1 -1 -1 -1 -1
 ///10 9 4 -1 -1 5 8 -1 6 -1 -1 3 -1 -1 -1
 ///8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
 
@@ -386,11 +387,11 @@ BinaryTree<int>* root =takeInputLevelWise();
 	for(int r=0;r<output->size();r++)
         cout<<output->at(r)<<" ";
 	*/
-	//printLevelWise(root);
+	printLevelWise(root);
     //levelorder(root);
 
 	//printleafs(root);
-	cout<<getdept(root,5);
+	cout<<getdept(root,30);
 	delete root;
 cout<<"Enter 1 to exit::";
 cin>>i;
