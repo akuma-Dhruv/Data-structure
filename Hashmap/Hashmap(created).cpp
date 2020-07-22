@@ -97,9 +97,9 @@ class ourmap{
                    prev->next=head->next;
 
                    V value = head->value;
-                   head->next=N;
-                   delete head;
-                   Count--;
+                   head->next=N;    // delete call is recursive so making its next null saves rest of list
+                   delete head;     //free the assigned memory block
+                   Count--;         // number of elements if deleted so must be deincremented
                    return value;
                }
                 prev=head;
@@ -107,6 +107,21 @@ class ourmap{
            }
            return 0;
 
+        }
+        V getValue(string key)
+        {
+             int bucketIndex=getBucketIndex(key);
+           MapNode<V>* head = buckets[bucketIndex];
+           MapNode<V>* prev= N;
+           while(head!=N)
+           {
+               if(head->key==key)
+               {
+                   return head->value;
+               }
+                head = head->next;
+        }
+        return 0;
         }
 
 
