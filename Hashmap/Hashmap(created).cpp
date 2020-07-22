@@ -82,6 +82,30 @@ class ourmap{
         }
         V remove(string key)
         {
+           int bucketIndex=getBucketIndex(key);
+           MapNode<V>* head = buckets[bucketIndex];
+           MapNode<V>* prev= N;
+           while(head!=N)
+           {
+               if(head->key==key)
+               {
+                   if(prev==N)
+                   {
+                       buckets[bucketIndex]=head->next;
+
+                   }else
+                   prev->next=head->next;
+
+                   V value = head->value;
+                   head->next=N;
+                   delete head;
+                   Count--;
+                   return value;
+               }
+                prev=head;
+                head=head->next;
+           }
+           return 0;
 
         }
 
