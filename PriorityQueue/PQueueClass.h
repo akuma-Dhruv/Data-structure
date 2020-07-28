@@ -10,11 +10,11 @@ PQueue(){
 }
 bool isEmpty()
 {
-return PQ.size==0;
+return PQ.size()==0;
 }
 int getsize()
 {
-return PQ.size;
+return PQ.size();
 }
 int getMin()
 {if(isEmpty())
@@ -22,4 +22,4 @@ return 0;
 else
 return PQ[0];
 }
-}
+};
