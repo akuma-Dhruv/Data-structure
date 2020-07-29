@@ -40,5 +40,39 @@ PQ.push_back(element);
         childIndex =parentIndex;
     }
 }
+int removeMax()
+{
+    int ele = PQ[0];
+    //swap
+    int temp = PQ[0];
+    PQ[0]=PQ[PQ.size()-1];
+    PQ[PQ.size()-1]=temp;
 
+    PQ.pop_back();
+
+    //down_hepify
+    int parentIndex = 0;
+    int lci= 2*parentIndex+1;
+    int rci=2*parentIndex+2;
+    while(lci<PQ.size())
+    {
+        //looking for maximum element among 3
+        int maxIndex=parentIndex;
+        if(PQ[maxIndex]<PQ[lci])
+        maxIndex=lci;
+        if(rci<PQ.size()&&PQ[maxIndex]<PQ[rci])
+        maxIndex=rci;
+        if(maxIndex==parentIndex)
+            break;
+        //swapping minimum element by parent
+        int temp = PQ[parentIndex];
+        PQ[parentIndex]=PQ[maxIndex];
+        PQ[maxIndex]=temp;
+        //updating index
+        parentIndex=maxIndex;
+        lci= 2*parentIndex+1;
+        rci= 2*parentIndex+2;
+    }
+return ele;
+}
 };
