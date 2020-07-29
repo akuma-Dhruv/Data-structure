@@ -1,6 +1,6 @@
 #include<vector>
 using namespace std;
-
+//minimum priority queue
 class PQueue
 {
 vector <int> PQ;
@@ -62,7 +62,8 @@ int removeMin()
         minIndex=lci;
         if(rci<PQ.size()&&PQ[minIndex]>PQ[rci])
         minIndex=rci;
-
+            if(minIndex==parentIndex)
+                break;
         //swapping minimum element by parent
         int temp = PQ[parentIndex];
         PQ[parentIndex]=PQ[minIndex];

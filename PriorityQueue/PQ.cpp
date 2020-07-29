@@ -12,6 +12,7 @@ q.Insert(60);
 cout<<q.getsize()<<endl;
 cout<<q.isEmpty()<<endl;
 cout<<q.getMin()<<endl;
-cout<<q.removeMin();
+while(!q.isEmpty())
+cout<<q.removeMin()<<" ";
 
 }
