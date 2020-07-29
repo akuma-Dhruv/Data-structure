@@ -40,4 +40,39 @@ void Insert(int elements)
         childIndex =parentIndex;
     }
 }
+int removeMin()
+{
+    int ele = PQ[0];
+    //swap
+    int temp = PQ[0];
+    PQ[0]=PQ[PQ.size()-1];
+    PQ[PQ.size()-1]=temp;
+
+    PQ.pop_back();
+
+    //down_hepify
+    int parentIndex = 0;
+    int lci= 2*parentIndex+1;
+    int rci=2*parentIndex+2;
+    while(lci<PQ.size())
+    {
+        //looking for minimum element among 3
+        int minIndex=parentIndex;
+        if(PQ[minIndex]>PQ[lci])
+        minIndex=lci;
+        if(rci<PQ.size()&&PQ[minIndex]>PQ[rci])
+        minIndex=rci;
+
+        //swapping minimum element by parent
+        int temp = PQ[parentIndex];
+        PQ[parentIndex]=PQ[minIndex];
+        PQ[minIndex]=temp;
+        //updating index
+        parentIndex=minIndex;
+        lci= 2*parentIndex+1;
+        rci= 2*parentIndex+2;
+    }
+return ele;
+}
+
 };
