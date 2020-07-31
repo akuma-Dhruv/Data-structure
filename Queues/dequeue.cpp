@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-class deque
+class dequeue
 {
     int *data;
     int nI;
@@ -8,7 +8,7 @@ class deque
     int capacity;
     int size;
 public:
-    deque()
+    dequeue()
     {
         data = new int [10];
         nI=0;
