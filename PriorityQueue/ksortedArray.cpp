@@ -27,6 +27,8 @@ void Ksorted(int input[],int n,int k)
         j++;
     }
 }
+//{10, 9, 8, 7, 4, 70, 60, 50} k = 4
+//{6, 5, 3, 2, 8, 10, 9} k = 3
 int main()
 {
     int a[]= {10,12,6,9,7,4};
