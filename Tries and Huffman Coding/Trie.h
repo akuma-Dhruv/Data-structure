@@ -6,7 +6,7 @@ Trie()
 {
 root= new TrieNode('\0');
 }
-void insertWord(string word)
+void insertWord(TrieNode *root, string word)
 {//base case
 if(word.size()==0)
     {
@@ -28,6 +28,29 @@ if(word.size()==0)
     }
     //Recursive call
     insertWord(child,word.substr(1));
+}
+bool searchWord(string word)
+{//base case
+if(word.size()==0)
+    {
+        if(root->isTerminal==true)
+        return true;
+        else
+            return false;
+    }
+    //small calculation
+
+    int index = word[0]-'a';
+   bool res;
+    if(root->children[index]!=NULL)
+    {
+       res = searchWord(word.substr(1));
+    }
+    else
+    {
+        return false;
+    }
+
 }
 //for enduser
 void insertWord(string word)
