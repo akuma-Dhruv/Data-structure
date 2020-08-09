@@ -9,6 +9,7 @@ Trie()
 {
 root= new TrieNode('\0');
 }
+/// insert function 
 void insertWord(TrieNode *root,string word)
 {//base case
 if(word.size()==0)
@@ -32,6 +33,7 @@ if(word.size()==0)
     //Recursive call
     insertWord(child,word.substr(1));
 }
+// search function
 bool searchWord(TrieNode *root,string word)
 {//base case
 if(word.size()==0)
@@ -55,8 +57,43 @@ if(word.size()==0)
         return false;
     }
 }
+//remove function 
+void removeWord(TrieNode* root,string word)
+{
+	//base case
+if(word.size()==0)
+    {
+        root->isTerminal =false;
+        return;
+    }
+	//small calculation
 
-//for enduser
+    int index = word[0]-'a';
+    TrieNode *child;
+    if(root->children[index]!=NULL)
+	{
+        child=root->children[index];
+    }
+	else
+	{
+		//word not found
+		return;
+	}
+    //Recursive call
+    removeWord(child,word.substr(1));
+	//remove if useless
+	if(child->isTerminal==false)
+	{
+		for(int i=0;i<26;i++)
+		{
+			if(child->children[i]!=NULL)
+				return;
+		}
+		delete child;
+		root->children[index]=NULL;
+	}
+}
+//for end user
 void insertWord(string word)
 {
     insertWord(root,word);
@@ -64,6 +101,10 @@ void insertWord(string word)
 bool searchWord(string word)
 {
     return searchWord(root,word);
+}
+void removeWord(string word)
+{
+    removeWord(root,word);
 }
 //search alteranative
 
