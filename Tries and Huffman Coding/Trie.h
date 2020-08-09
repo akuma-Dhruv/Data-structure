@@ -54,8 +54,6 @@ if(word.size()==0)
     {
         return false;
     }
-//this function will never work
-///#Pure_illogical_code
 }
 
 //for enduser
@@ -67,5 +65,30 @@ bool searchWord(string word)
 {
     return searchWord(root,word);
 }
+//search alteranative
+
+/*
+bool searchWord(TrieNode *root,string word)
+{//base case
+if(word.size()==0)
+    {
+        return root->isTerminal;
+    }
+    //small calculation
+
+    int index = word[0]-'a';
+    TrieNode *child;
+    if(root->children[index]!=NULL)
+    {
+       child = root->children[index];
+    }
+    else
+    {
+        return false;
+    }
+    //recursive call
+    return searchWord(child,word.substr(1));
+}
+*/
 
 };
