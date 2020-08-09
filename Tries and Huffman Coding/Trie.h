@@ -30,7 +30,7 @@ if(word.size()==0)
         root->children[index] = child;
     }
     //Recursive call
-    insertWord(child,word.substr(1));
+    insertWord(child,word);
 }
 bool searchWord(TrieNode *root,string word)
 {//base case
