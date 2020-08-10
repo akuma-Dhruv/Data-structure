@@ -1,0 +1,4 @@
+
+types of tries 
+compressed tries 
+suffx tries
