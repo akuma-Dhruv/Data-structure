@@ -57,11 +57,37 @@ int stepsToOne2(int n)
     return stepsToOne_helper(n,ans);
 }
 
+//bottom-up
+int getMinSteps ( int n )
+
+{
+
+int ans[n+1],i;
+
+ans[1]=0;  // trivial case
+
+for(int i=2;i<=n;i++)
+
+{
+ans[i]=1+ans[i-1];
+
+if(i%2==0)
+    ans[i]=min(ans[i],1+ans[i/2]);
+
+if(i%3==0)
+    ans[i]=min(ans[i],1+ans[i/3]);
+}
+
+return ans[n];
+
+}
+
 
 
 int main()
 {
     int n;
     cin>>n;
-    cout<<stepsToOne2(n);
+    //cout<<stepsToOne2(n);
+    cout<<getMinSteps(n);
 }
